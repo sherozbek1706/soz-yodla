@@ -21,19 +21,17 @@ let addMenu = document.querySelector("#add-menu");
 let listsMenu = document.querySelector("#lists-menu");
 let translatorMenu = document.querySelector("#translator-menu");
 
-let baseCha = JSON.parse(localStorage.getItem("data"));
-
-// DATA'ni Localstorage'ga jo'natish
-console.log(baseCha.length);
+let baseCha = JSON.parse(localStorage.getItem("base"));
 console.log(baseCha);
-baseCha.length
-  ? console.log("Hammasi yaxshi!")
-  : localStorage.setItem("data", JSON.stringify(data));
+// DATA'ni Localstorage'ga jo'natish
+baseCha == false
+  ? localStorage.setItem("base", JSON.stringify(data))
+  : console.log("Hammasi yaxshi!");
 // --------
 // --------
 
 const renderRandomWord = () => {
-  const base = JSON.parse(localStorage.getItem("data"));
+  const base = JSON.parse(localStorage.getItem("base"));
   const dataLength = base.length;
   let dataIdx = Math.floor(Math.random() * dataLength);
   let languageIdx = +Math.floor(Math.random() * 2);
@@ -99,9 +97,9 @@ additionForm.addEventListener("submit", (e) => {
     uz: uzbek.value,
     en: english.value,
   };
-  const base = JSON.parse(localStorage.getItem("data"));
+  const base = JSON.parse(localStorage.getItem("base"));
   base.push(newWord);
-  localStorage.setItem("data", JSON.stringify(base));
+  localStorage.setItem("base", JSON.stringify(base));
   uzbek.value = "";
   english.value = "";
   loaderSpinner();
@@ -116,7 +114,7 @@ function beautyString(str) {
 }
 function renderListWords() {
   let Lists = document.querySelector("#lists");
-  let base = JSON.parse(localStorage.getItem("data"));
+  let base = JSON.parse(localStorage.getItem("base"));
   console.log(base);
   Lists.textContent = base.length ? null : console.log("Hayrli Tong");
   console.log("betga kirdim oka");
@@ -158,10 +156,10 @@ function renderListWords() {
 renderListWords();
 
 function deleteList(id) {
-  let base = JSON.parse(localStorage.getItem("data"));
+  let base = JSON.parse(localStorage.getItem("base"));
   base.splice(id, 1);
   loaderSpinner();
-  localStorage.setItem("data", JSON.stringify(base));
+  localStorage.setItem("base", JSON.stringify(base));
   renderListWords();
 }
 emptyAddWord.addEventListener("click", () => {
