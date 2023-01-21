@@ -8,7 +8,6 @@
   outline: none;
 }
 
-
 .container {
   width: 100%;
   min-height: 100vh;
@@ -200,7 +199,7 @@ header p:hover {
   letter-spacing: -1.2px;
   font-size: 20px;
   font-weight: 700;
-  background:#5c6eb6 ;
+  background: #5c6eb6;
   cursor: pointer;
 }
 
@@ -479,39 +478,42 @@ header p:hover {
 .hide {
   display: none;
 }
-@media(max-width:600px){
-  .home-main .word h1{
+@media (max-width: 600px) {
+  .home-main .word h1 {
+    letter-spacing: -0.5px;
+  }
+  .home-main .word h1 {
     font-size: 32px;
   }
-  .info-main h1{
+  .info-main h1 {
     font-size: 18px;
   }
-  .info-main p{
+  .info-main p {
     padding: 0;
   }
 }
-@media(max-width:500px){
-  .add-main h1{
+@media (max-width: 500px) {
+  .add-main h1 {
     font-size: 24px;
   }
-  .addWord-button{
+  .addWord-button {
     font-size: 16px;
   }
-  .list-main h1{
+  .list-main h1 {
     font-size: 18px;
   }
-  .list-left-side .id{
+  .list-left-side .id {
     display: none;
   }
-  .info-main p{
+  .info-main p {
     text-align: justify;
   }
 }
-@media (max-width: 400px){
-  .list-left-side .list-name{
+@media (max-width: 400px) {
+  .list-left-side .list-name {
     font-size: 14px;
   }
-  .list .trash{
+  .list .trash {
     font-size: 14px;
     padding: 6px 8px;
   }
