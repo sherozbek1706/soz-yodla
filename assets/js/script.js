@@ -44,8 +44,6 @@ const renderRandomWord = () => {
   // SHE'ROZBEK
 };
 
-renderRandomWord();
-
 nextButton.addEventListener("click", () => renderRandomWord());
 
 showModal.addEventListener("click", () => {
