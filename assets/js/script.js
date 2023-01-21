@@ -21,17 +21,20 @@ let addMenu = document.querySelector("#add-menu");
 let listsMenu = document.querySelector("#lists-menu");
 let translatorMenu = document.querySelector("#translator-menu");
 
-let baseCha = JSON.parse(localStorage.getItem("base"));
+let baseCha = JSON.parse(localStorage.getItem("datas"));
 console.log(baseCha);
 // DATA'ni Localstorage'ga jo'natish
-baseCha == false
-  ? localStorage.setItem("base", JSON.stringify(data))
-  : console.log("Hammasi yaxshi!");
-// --------
-// --------
+
+console.log(localStorage.getItem("datas"));
+
+if (localStorage.getItem("datas") == null) {
+  localStorage.setItem("datas", JSON.stringify(data));
+} else {
+  console.log("Hammasi yaxshi!");
+}
 
 const renderRandomWord = () => {
-  const base = JSON.parse(localStorage.getItem("base"));
+  const base = JSON.parse(localStorage.getItem("datas"));
   const dataLength = base.length;
   let dataIdx = Math.floor(Math.random() * dataLength);
   let languageIdx = +Math.floor(Math.random() * 2);
@@ -43,6 +46,7 @@ const renderRandomWord = () => {
 
   // SHE'ROZBEK
 };
+renderRandomWord();
 
 nextButton.addEventListener("click", () => renderRandomWord());
 
@@ -95,9 +99,9 @@ additionForm.addEventListener("submit", (e) => {
     uz: uzbek.value,
     en: english.value,
   };
-  const base = JSON.parse(localStorage.getItem("base"));
+  const base = JSON.parse(localStorage.getItem("datas"));
   base.push(newWord);
-  localStorage.setItem("base", JSON.stringify(base));
+  localStorage.setItem("datas", JSON.stringify(base));
   uzbek.value = "";
   english.value = "";
   loaderSpinner();
@@ -112,7 +116,7 @@ function beautyString(str) {
 }
 function renderListWords() {
   let Lists = document.querySelector("#lists");
-  let base = JSON.parse(localStorage.getItem("base"));
+  let base = JSON.parse(localStorage.getItem("datas"));
   console.log(base);
   Lists.textContent = base.length ? null : console.log("Hayrli Tong");
   console.log("betga kirdim oka");
@@ -154,10 +158,10 @@ function renderListWords() {
 renderListWords();
 
 function deleteList(id) {
-  let base = JSON.parse(localStorage.getItem("base"));
+  let base = JSON.parse(localStorage.getItem("datas"));
   base.splice(id, 1);
   loaderSpinner();
-  localStorage.setItem("base", JSON.stringify(base));
+  localStorage.setItem("datas", JSON.stringify(base));
   renderListWords();
 }
 emptyAddWord.addEventListener("click", () => {
