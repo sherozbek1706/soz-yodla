@@ -21,20 +21,20 @@ let addMenu = document.querySelector("#add-menu");
 let listsMenu = document.querySelector("#lists-menu");
 let translatorMenu = document.querySelector("#translator-menu");
 
-let baseCha = JSON.parse(localStorage.getItem("datas"));
+let baseCha = JSON.parse(localStorage.getItem("bases"));
 console.log(baseCha);
 // DATA'ni Localstorage'ga jo'natish
 
-console.log(localStorage.getItem("datas"));
+console.log(localStorage.getItem("bases"));
 
-if (localStorage.getItem("datas") == null) {
-  localStorage.setItem("datas", JSON.stringify(data));
+if (localStorage.getItem("bases") == null) {
+  localStorage.setItem("bases", JSON.stringify(data));
 } else {
   console.log("Hammasi yaxshi!");
 }
 
 const renderRandomWord = () => {
-  const base = JSON.parse(localStorage.getItem("datas"));
+  const base = JSON.parse(localStorage.getItem("bases"));
   const dataLength = base.length;
   let dataIdx = Math.floor(Math.random() * dataLength);
   let languageIdx = +Math.floor(Math.random() * 2);
@@ -99,9 +99,9 @@ additionForm.addEventListener("submit", (e) => {
     uz: uzbek.value,
     en: english.value,
   };
-  const base = JSON.parse(localStorage.getItem("datas"));
+  const base = JSON.parse(localStorage.getItem("bases"));
   base.push(newWord);
-  localStorage.setItem("datas", JSON.stringify(base));
+  localStorage.setItem("bases", JSON.stringify(base));
   uzbek.value = "";
   english.value = "";
   loaderSpinner();
@@ -116,12 +116,12 @@ function beautyString(str) {
 }
 function renderListWords() {
   let Lists = document.querySelector("#lists");
-  let base = JSON.parse(localStorage.getItem("datas"));
+  let base = JSON.parse(localStorage.getItem("bases"));
   Lists.textContent = base.length ? null : console.log("Hayrli Tong");
   console.log("betga kirdim oka");
   if (!base.length) {
     emptyAddWord.classList.remove("hide");
-    localStorage.removeItem("datas");
+    localStorage.removeItem("bases");
     window.location.assign("/");
   } else {
     emptyAddWord.classList.add("hide");
@@ -158,10 +158,10 @@ function renderListWords() {
 renderListWords();
 
 function deleteList(id) {
-  let base = JSON.parse(localStorage.getItem("datas"));
+  let base = JSON.parse(localStorage.getItem("bases"));
   base.splice(id, 1);
   loaderSpinner();
-  localStorage.setItem("datas", JSON.stringify(base));
+  localStorage.setItem("bases", JSON.stringify(base));
   renderListWords();
 }
 emptyAddWord.addEventListener("click", () => {
