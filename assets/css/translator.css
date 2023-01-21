@@ -1,0 +1,160 @@
+/* Import Google Font - Poppins */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+.translator-main {
+  max-width: 690px;
+  width: 100%;
+  padding: 30px;
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.01);
+  z-index: 50;
+}
+.translator-main .wrapper {
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+.translator-main .wrapper .text-input {
+  width: 100%;
+  height: 260px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
+}
+.translator-main .text-input .to-text {
+  border-radius: 0px;
+  border-top: 1px solid #ccc;
+}
+.translator-main .text-input textarea {
+  height: 50%;
+  width: 100%;
+  border: none;
+  outline: none;
+  resize: none;
+  background: none;
+  font-size: 18px;
+  font-weight: 700;
+  padding: 10px 15px;
+  letter-spacing: -1px;
+  background-color: #5c6eb645;
+}
+.translator-main .text-input textarea:nth-child(1){
+  border-bottom: 1px solid #7c7c7c;
+}
+.translator-main .controls,
+li,
+.icons,
+.icons i {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.translator-main .controls {
+  list-style: none;
+  padding: 12px 15px;
+  background: #5372f0;
+
+}
+.translator-main .controls .row .icons {
+  width: 38%;
+  display: none;
+}
+.translator-main .controls .row .icons i {
+  width: 50px;
+  color: #adadad;
+  font-size: 14px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  justify-content: center;
+}
+.translator-main .controls .row.from .icons {
+  padding-right: 15px;
+  border-right: 1px solid #ccc;
+}
+.translator-main .controls .row.to .icons {
+  padding-left: 15px;
+  border-left: 1px solid #ccc;
+}
+.translator-main .controls .row select {
+  color: #000;
+  border: none;
+  outline: none;
+  font-size: 18px;
+  background: none;
+  padding-left: 5px;
+  letter-spacing: -1.2px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.translator-main .text-input textarea::-webkit-scrollbar {
+  width: 4px;
+}
+.translator-main .controls .row select::-webkit-scrollbar {
+  width: 8px;
+}
+.translator-main .text-input textarea::-webkit-scrollbar-track,
+.translator-main .controls .row select::-webkit-scrollbar-track {
+  background: #fff;
+}
+.translator-main .text-input textarea::-webkit-scrollbar-thumb {
+  background: #ddd;
+  border-radius: 8px;
+}
+.translator-main .controls .row select::-webkit-scrollbar-thumb {
+  background: #999;
+  border-radius: 8px;
+  border-right: 2px solid #ffffff;
+}
+.translator-main .controls .exchange {
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  transition: transform 0.2s ease;
+}
+.translator-main .controls i:active {
+  transform: scale(0.9);
+}
+.translator-main button {
+  width: 100%;
+  padding: 14px;
+  outline: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  margin-top: 20px;
+  font-size: 18px;
+  border-radius: 4px;
+  font-weight: 600;
+  letter-spacing: -1px;
+  background: #5372f0;
+}
+
+@media (max-width: 660px) {
+  .translator-main {
+    padding: 20px;
+  }
+  .translator-main .wrapper .text-input {
+    flex-direction: column;
+  }
+  .translator-main .text-input .to-text {
+    border-left: 0px;
+    border-top: 1px solid #ccc;
+  }
+  .translator-main .text-input textarea {
+    height: 200px;
+  }
+  .translator-main .controls .row .icons {
+    display: none;
+  }
+  .translator-main button {
+    padding: 13px;
+    font-size: 16px;
+  }
+  .translator-main .controls .row select {
+    font-size: 16px;
+  }
+  .translator-main .controls .exchange {
+    font-size: 14px;
+  }
+}

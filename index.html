@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="./assets/css/translator.css">
+  <!-- <link rel="stylesheet" href="./assets/icon-css/font-awesome.css"> -->
+  <title>So'z Yodla | She'rozbek</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="blur">
+
+    </div>
+    <header>
+      <h1>So'z Yodla | She'rozbek</h1>
+      <!-- <i class="fa-solid fa-house"></i> -->
+      <p id="show-modal"><i class="fa-sharp fa-solid fa-bars"></i></p>
+    </header>
+    <div class="home-main hide" id="home-main">
+      <div class="word">
+        <h1 id="main-word"></h1>
+      </div>
+      <div class="random-button">
+        <button class="next-button" id="next-button">NEXT WORD</button>
+      </div>
+    </div>
+    <div class="info-main hide" id="info-main">
+      <h1>Dastur Haqida Ma'lumot</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta, quas blanditiis deserunt mollitia laboriosam
+        maxime, sapiente, doloremque quos reprehenderit iste unde?</p>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis omnis ipsa ullam velit quae, temporibus, nemo
+        voluptatibus sint commodi fuga saepe, quam dolorem quia. Eos quidem quas officiis explicabo tempora rerum error
+        saepe ab mollitia. Reiciendis cumque quidem inventore architecto!</p>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla tempore iure blanditiis sapiente ea, accusantium
+        quidem, harum quasi dignissimos illo distinctio, exercitationem quibusdam minus necessitatibus molestias quod
+        voluptates illum repellat!</p>
+      <h3>Telefon Raqam</h3>
+      <h4>+998 93 834 06 17</h4>
+      <h4>+998 88 396 49 09</h4>
+      <h3>Email Pochta</h3>
+      <h4>baxtiyorovsherozbek1111@gmail.com</h4>
+      <h4>osmondagihayollarim0888@mail.ru</h4>
+      <h3>Manzil</h3>
+      <h4>Toshkent shahar , Chilonzor Tumani , 16 daha</h4>
+      <h4>46-dom ,Chilonzor Metro</h4>
+    </div>
+    <div class="add-main hide" id="add-main">
+      <div class="spinner-cont hide" id="spinner-cont">
+        <div class="lds-ellipsis">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <h1>Yangi so'z qo'shilmoqda</h1>
+      </div>
+      <h1>Yangi So'z Qo'shish</h1>
+      <form id="addition-form">
+        <div class="addition-input">
+          <p>O'zbekcha</p>
+          <input type="text" id="uzbek" placeholder="Yangi so'z kirit..." required>
+        </div>
+        <div class="addition-input">
+          <p>Inglizcha</p>
+          <input type="text" id="english" placeholder="Enter new word..." required>
+        </div>
+        <button class="addWord-button">
+          Add Word
+        </button>
+      </form>
+    </div>
+    <div class="list-main hide" id="lists-main">
+      <div class="spinner-cont hide" id="spinner-delete">
+        <div class="lds-ellipsis">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <h1>Malumot o'chirilmoqda</h1>
+      </div>
+      <h1>Barcha so'zlar</h1>
+      <div class="lists" id="lists">
+        <!-- <div class="list">
+          <div class="list-left-side">
+            <p class="id">4</p>
+            <p class="list-name">Hello - Salom</p>
+          </div>
+          <i class="fa-solid fa-trash trash"></i>
+        </div> -->
+        <button class="empty-addWord hide" id="empty-addWord">Yangi so'z Qo'shish!</button>
+      </div>
+
+    </div>
+    <div class="translator-main" id="translator-main">
+      <div class="wrapper">
+        <ul class="controls">
+          <li class="row from">
+            <div class="icons">
+              <i id="from" class="fas fa-volume-up"></i>
+              <i id="from" class="fas fa-copy"></i>
+            </div>
+            <select></select>
+          </li>
+          <li class="exchange"><i class="fas fa-exchange-alt"></i></li>
+          <li class="row to">
+            <select></select>
+            <div class="icons">
+              <i id="to" class="fas fa-volume-up"></i>
+              <i id="to" class="fas fa-copy"></i>
+            </div>
+          </li>
+        </ul>
+        <div class="text-input">
+          <textarea spellcheck="false" class="from-text" placeholder="Enter text"></textarea>
+          <textarea spellcheck="false" readonly disabled class="to-text" placeholder="Translation"></textarea>
+        </div>
+      </div>
+      <button id="translate">Translate Text</button>
+    </div>
+    <div class="modal-wrapper modal-hide" id="modal-menu">
+      <div class="modal">
+        <div class="modal-header">
+          <h1>So'z Yodla | She'rozbek</h1>
+        </div>
+        <div class="modal-menu">
+          <div class="modal-menu-item" id="head-menu">
+            <i class="fa-solid fa-house"></i>
+            <p>Bosh Menu</p>
+          </div>
+          <div class="modal-menu-item" id="add-menu">
+            <i class="fa-solid fa-square-plus"></i>
+            <p>Bazaga Yangi So'z Qo'shish</p>
+          </div>
+          <div class="modal-menu-item" id="lists-menu">
+            <i class="fa-solid fa-list"></i>
+            <p>Bazadagi Barcha so'zlarni ko'rish.</p>
+          </div>
+          <div class="modal-menu-item" id="translator-menu">
+            <i class="fa-solid fa-globe"></i>
+            <p>Tarjimon</p>
+          </div>
+          <div class="modal-menu-item" id="infoAbout-menu">
+            <i class="fa-solid fa-circle-info"></i>
+            <p>Dastur Haqida Ma'lumot</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="./assets/base/data.js"></script>
+  <script src="./assets/js/script.js"></script>
+  <script src="./assets/base/countries.js"></script>
+  <script src="./assets/js/translator.js"></script>
+</body>
+
+</html>
