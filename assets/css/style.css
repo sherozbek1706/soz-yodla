@@ -483,6 +483,12 @@ header p:hover {
   .home-main .word h1{
     font-size: 32px;
   }
+  .info-main h1{
+    font-size: 18px;
+  }
+  .info-main p{
+    padding: 0;
+  }
 }
 @media(max-width:500px){
   .add-main h1{
