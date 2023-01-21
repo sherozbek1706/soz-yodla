@@ -117,11 +117,11 @@ function beautyString(str) {
 function renderListWords() {
   let Lists = document.querySelector("#lists");
   let base = JSON.parse(localStorage.getItem("datas"));
-  console.log(base);
   Lists.textContent = base.length ? null : console.log("Hayrli Tong");
   console.log("betga kirdim oka");
   if (!base.length) {
     emptyAddWord.classList.remove("hide");
+    localStorage.removeItem("datas");
     window.location.assign("/");
   } else {
     emptyAddWord.classList.add("hide");
