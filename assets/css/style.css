@@ -69,6 +69,7 @@ header p:hover {
   border-radius: 4px;
   background: #fff;
   z-index: 50;
+  transition: .5s ease-in-out;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
 }
 .home-main .word {
@@ -119,7 +120,7 @@ header p:hover {
   padding: 8px 20px;
   border-radius: 4px;
   color: white;
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 5px 15px 0px;
   transition: .4s ease-in-out;
 }
 .combo-div .main-combo{
@@ -136,6 +137,7 @@ header p:hover {
 
 .combo-hide{
   transform: scale(0);
+  height: 0;
 }
 .info-main {
   width: 600px;

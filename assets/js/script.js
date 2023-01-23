@@ -48,9 +48,11 @@ const renderRandomWord = () => {
 
   if (comboXG > 5 && 20 >= comboXG) {
     comboDiv.classList.remove("combo-hide");
-  }else if(comboXG > 20){
+  }else if(comboXG > 20 && 35 >= comboXG){
     comboDiv.setAttribute('style', 'background: #943838'); 
-  } else {
+  }else  if(comboXG > 35){
+    comboDiv.setAttribute('style', 'background: #cc2222 ; box-shadow: rgba(241, 6, 6, 0.3) 0px 19px 38px, rgba(241, 6, 6, 0.3) 0px 15px 12px;'); 
+  }else {
     comboDiv.classList.add("combo-hide");
   }
 
