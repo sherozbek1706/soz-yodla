@@ -69,7 +69,7 @@ header p:hover {
   border-radius: 4px;
   background: #fff;
   z-index: 50;
-  transition: .5s ease-in-out;
+  transition: 0.5s ease-in-out;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
 }
 .home-main .word {
@@ -110,32 +110,32 @@ header p:hover {
   cursor: pointer;
 }
 
-.combo-div{
+.combo-div {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   background-color: #aa4a4a;
-  
+
   padding: 8px 20px;
   border-radius: 4px;
   color: white;
   box-shadow: rgba(0, 0, 0, 0.3) 0px 5px 15px 0px;
-  transition: .4s ease-in-out;
+  transition: 0.4s ease-in-out;
 }
-.combo-div .main-combo{
+.combo-div .main-combo {
   font-size: 24px;
   font-weight: 700;
   letter-spacing: -1.2px;
   text-transform: uppercase;
 }
-.combo-div .combo-num{
+.combo-div .combo-num {
   font-size: 24px;
   font-weight: 800;
   letter-spacing: -0.8px;
 }
 
-.combo-hide{
+.combo-hide {
   transform: scale(0);
   height: 0;
 }
@@ -520,6 +520,9 @@ header p:hover {
   }
   .info-main p {
     padding: 0;
+  }
+  .home-main .word {
+    height: 100px;
   }
 }
 @media (max-width: 500px) {
