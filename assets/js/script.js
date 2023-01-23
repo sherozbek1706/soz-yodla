@@ -38,6 +38,14 @@ if (localStorage.getItem("bases") == null) {
   console.log("Hammasi yaxshi!");
 }
 
+// RANDOM BG
+container.setAttribute(
+  "style",
+  `background: url('/assets/image/bg${Math.floor(Math.random() * 7)}.jpg') no-repeat;
+   background-size:cover;
+   background-position:center;
+  `
+);
 const renderRandomWord = () => {
   comboXG += 1;
   const base = JSON.parse(localStorage.getItem("bases"));
@@ -46,13 +54,11 @@ const renderRandomWord = () => {
   let languageIdx = +Math.floor(Math.random() * 2);
   let languageWord = languageIdx ? base[dataIdx].uz : base[dataIdx].en;
   comboNum.textContent = `x ${comboXG}`;
-
-  let randomBg = Math.floor(Math.random() * 7);
-
-  if (comboXG % 13 == 0) {
+  
+  if (comboXG % 7 == 0) {
     container.setAttribute(
       "style",
-      `background: url('/assets/image/bg${randomBg}.jpg') no-repeat;
+      `background: url('/assets/image/bg${Math.floor(Math.random() * 7)}.jpg') no-repeat;
        background-size:cover;
        background-position:center;
       `
