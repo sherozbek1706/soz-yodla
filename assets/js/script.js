@@ -1,3 +1,4 @@
+let container = document.querySelector(".container");
 let mainWord = document.querySelector("#main-word");
 let nextButton = document.querySelector("#next-button");
 let showModal = document.querySelector("#show-modal");
@@ -46,13 +47,27 @@ const renderRandomWord = () => {
   let languageWord = languageIdx ? base[dataIdx].uz : base[dataIdx].en;
   comboNum.textContent = `x ${comboXG}`;
 
+  let randomBg = Math.floor(Math.random() * 7);
+
+  if (comboXG % 13 == 0) {
+    container.setAttribute(
+      "style",
+      `background: url('/assets/image/bg${randomBg}.jpg') no-repeat;
+       background-size:cover;
+       background-position:center;
+      `
+    );
+  }
   if (comboXG > 5 && 20 >= comboXG) {
     comboDiv.classList.remove("combo-hide");
-  }else if(comboXG > 20 && 35 >= comboXG){
-    comboDiv.setAttribute('style', 'background: #943838'); 
-  }else  if(comboXG > 35){
-    comboDiv.setAttribute('style', 'background: #cc2222 ; box-shadow: rgba(241, 6, 6, 0.3) 0px 19px 38px, rgba(241, 6, 6, 0.3) 0px 15px 12px;'); 
-  }else {
+  } else if (comboXG > 20 && 35 >= comboXG) {
+    comboDiv.setAttribute("style", "background: #943838");
+  } else if (comboXG > 35) {
+    comboDiv.setAttribute(
+      "style",
+      "background: #cc2222 ; box-shadow: rgba(241, 6, 6, 0.3) 0px 19px 38px, rgba(241, 6, 6, 0.3) 0px 15px 12px;"
+    );
+  } else {
     comboDiv.classList.add("combo-hide");
   }
 
