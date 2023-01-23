@@ -109,6 +109,34 @@ header p:hover {
   cursor: pointer;
 }
 
+.combo-div{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #aa4a4a;
+  
+  padding: 8px 20px;
+  border-radius: 4px;
+  color: white;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+  transition: .4s ease-in-out;
+}
+.combo-div .main-combo{
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -1.2px;
+  text-transform: uppercase;
+}
+.combo-div .combo-num{
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.8px;
+}
+
+.combo-hide{
+  transform: scale(0);
+}
 .info-main {
   width: 600px;
   height: 400px;
@@ -254,7 +282,7 @@ header p:hover {
 .list-left-side .list-name {
   font-size: 18px;
   font-weight: 600;
-  letter-spacing: -1.2px;
+  letter-spacing: -0.8px;
   transition: 0.3s ease-in-out;
 }
 .list .trash {

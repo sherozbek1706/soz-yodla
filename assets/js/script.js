@@ -21,6 +21,10 @@ let addMenu = document.querySelector("#add-menu");
 let listsMenu = document.querySelector("#lists-menu");
 let translatorMenu = document.querySelector("#translator-menu");
 
+let comboDiv = document.querySelector("#combo-div");
+let comboNum = document.querySelector("#combo-num");
+let comboXG = 0;
+
 let baseCha = JSON.parse(localStorage.getItem("bases"));
 console.log(baseCha);
 // DATA'ni Localstorage'ga jo'natish
@@ -34,11 +38,21 @@ if (localStorage.getItem("bases") == null) {
 }
 
 const renderRandomWord = () => {
+  comboXG += 1;
   const base = JSON.parse(localStorage.getItem("bases"));
   const dataLength = base.length;
   let dataIdx = Math.floor(Math.random() * dataLength);
   let languageIdx = +Math.floor(Math.random() * 2);
   let languageWord = languageIdx ? base[dataIdx].uz : base[dataIdx].en;
+  comboNum.textContent = `x ${comboXG}`;
+
+  if (comboXG > 5 && 20 >= comboXG) {
+    comboDiv.classList.remove("combo-hide");
+  }else if(comboXG > 20){
+    comboDiv.setAttribute('style', 'background: #943838'); 
+  } else {
+    comboDiv.classList.add("combo-hide");
+  }
 
   let gapirUkam = new SpeechSynthesisUtterance(languageWord);
   mainWord.textContent = languageWord.toUpperCase();
@@ -51,6 +65,7 @@ renderRandomWord();
 nextButton.addEventListener("click", () => renderRandomWord());
 
 showModal.addEventListener("click", () => {
+  comboXG = 0;
   modal.classList.remove("modal-hide");
   homeMain.classList.add("hide");
   infoMain.classList.add("hide");
