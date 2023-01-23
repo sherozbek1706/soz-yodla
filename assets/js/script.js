@@ -1,6 +1,7 @@
 let container = document.querySelector(".container");
 let mainWord = document.querySelector("#main-word");
 let nextButton = document.querySelector("#next-button");
+let helpButton = document.querySelector("#help-button");
 let showModal = document.querySelector("#show-modal");
 let modal = document.querySelector("#modal-menu");
 let emptyAddWord = document.querySelector("#empty-addWord");
@@ -25,7 +26,7 @@ let translatorMenu = document.querySelector("#translator-menu");
 let comboDiv = document.querySelector("#combo-div");
 let comboNum = document.querySelector("#combo-num");
 let comboXG = 0;
-
+let isOne = true;
 let baseCha = JSON.parse(localStorage.getItem("bases"));
 console.log(baseCha);
 // DATA'ni Localstorage'ga jo'natish
@@ -41,7 +42,9 @@ if (localStorage.getItem("bases") == null) {
 // RANDOM BG
 container.setAttribute(
   "style",
-  `background: url('/assets/image/bg${Math.floor(Math.random() * 7)}.jpg') no-repeat;
+  `background: url('/assets/image/bg${Math.floor(
+    Math.random() * 7
+  )}.jpg') no-repeat;
    background-size:cover;
    background-position:center;
   `
@@ -54,16 +57,26 @@ const renderRandomWord = () => {
   let languageIdx = +Math.floor(Math.random() * 2);
   let languageWord = languageIdx ? base[dataIdx].uz : base[dataIdx].en;
   comboNum.textContent = `x ${comboXG}`;
-  
+
+  isOne = true;
   if (comboXG % 7 == 0) {
     container.setAttribute(
       "style",
-      `background: url('/assets/image/bg${Math.floor(Math.random() * 7)}.jpg') no-repeat;
+      `background: url('/assets/image/bg${Math.floor(
+        Math.random() * 7
+      )}.jpg') no-repeat;
        background-size:cover;
        background-position:center;
       `
     );
   }
+
+  if (comboXG >= 22) {
+    helpButton.disabled = false;
+  } else {
+    helpButton.disabled = true;
+  }
+
   if (comboXG > 5 && 20 >= comboXG) {
     comboDiv.classList.remove("combo-hide");
   } else if (comboXG > 20 && 35 >= comboXG) {
@@ -79,11 +92,25 @@ const renderRandomWord = () => {
 
   let gapirUkam = new SpeechSynthesisUtterance(languageWord);
   mainWord.textContent = languageWord.toUpperCase();
+  mainWord.dataset.id = languageIdx ? base[dataIdx].en : base[dataIdx].uz;
   !(languageIdx == 0) || speechSynthesis.speak(gapirUkam);
 
   // SHE'ROZBEK
 };
 renderRandomWord();
+
+helpButton.addEventListener("click", () => {
+  if (isOne) {
+    if (comboXG <= 22) {
+      comboNum.disabled = true;
+    } else {
+      mainWord.textContent = mainWord.dataset.id.toUpperCase();
+      comboXG -= 9;
+      isOne = false;
+      comboNum.textContent = `x ${comboXG}`;
+    }
+  }
+});
 
 nextButton.addEventListener("click", () => renderRandomWord());
 
