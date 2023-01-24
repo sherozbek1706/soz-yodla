@@ -16,12 +16,16 @@ let infoMain = document.querySelector("#info-main");
 let AddMain = document.querySelector("#add-main");
 let listsMain = document.querySelector("#lists-main");
 let translatorMain = document.querySelector("#translator-main");
+let settingsMain = document.querySelector("#settings-main");
 
 let headMenu = document.querySelector("#head-menu");
 let infoAboutMenu = document.querySelector("#infoAbout-menu");
 let addMenu = document.querySelector("#add-menu");
 let listsMenu = document.querySelector("#lists-menu");
 let translatorMenu = document.querySelector("#translator-menu");
+let settingsMenu = document.querySelector("#settings-menu");
+
+let settingsOption = document.querySelector("#test-language-select");
 
 let comboDiv = document.querySelector("#combo-div");
 let comboNum = document.querySelector("#combo-num");
@@ -43,18 +47,36 @@ if (localStorage.getItem("bases") == null) {
 container.setAttribute(
   "style",
   `background: url('/assets/image/bg${Math.floor(
-    Math.random() * 7
+    // Math.random() * 7
+    5
   )}.jpg') no-repeat;
    background-size:cover;
    background-position:center;
   `
 );
+
+// OPTION LANGUAGE IDX
+settingsOption.value = localStorage.getItem("languageIdx")
+localStorage.getItem("languageIdx")
+  ? console.log("Bor Oka Til")
+  : localStorage.setItem("languageIdx", "all");
+
+
+
 const renderRandomWord = () => {
+  let languageName = localStorage.getItem("languageIdx");
   comboXG += 1;
+  let languageIdx = 0;
+  if (languageName == "all") {
+    languageIdx = Math.floor(Math.random() * 2);
+  } else if (languageName == "en") {
+    languageIdx = 0;
+  } else if (languageName == "uz") {
+    languageIdx = 1;
+  }
   const base = JSON.parse(localStorage.getItem("bases"));
   const dataLength = base.length;
   let dataIdx = Math.floor(Math.random() * dataLength);
-  let languageIdx = +Math.floor(Math.random() * 2);
   let languageWord = languageIdx ? base[dataIdx].uz : base[dataIdx].en;
   comboNum.textContent = `x ${comboXG}`;
 
@@ -122,6 +144,7 @@ showModal.addEventListener("click", () => {
   AddMain.classList.add("hide");
   listsMain.classList.add("hide");
   translatorMain.classList.add("hide");
+  settingsMain.classList.add("hide");
 });
 
 headMenu.addEventListener("click", () => {
@@ -145,6 +168,10 @@ listsMenu.addEventListener("click", () => {
   listsMain.classList.remove("hide");
   modal.classList.add("modal-hide");
   renderListWords();
+});
+settingsMenu.addEventListener("click", () => {
+  settingsMain.classList.remove("hide");
+  modal.classList.add("modal-hide");
 });
 
 const loaderSpinner = () => {
@@ -233,4 +260,8 @@ emptyAddWord.addEventListener("click", () => {
   AddMain.classList.remove("hide");
   listsMain.classList.add("hide");
   console.log("");
+});
+
+settingsOption.addEventListener("change", () => {
+  localStorage.setItem("languageIdx", settingsOption.value);
 });

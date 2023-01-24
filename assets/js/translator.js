@@ -1,7 +1,7 @@
 const fromText = document.querySelector(".from-text"),
   toText = document.querySelector(".to-text"),
   exchageIcon = document.querySelector(".exchange"),
-  selectTag = document.querySelectorAll("select"),
+  selectTag = document.querySelectorAll(".select"),
   icons = document.querySelectorAll(".row i");
 (translateBtn = document.querySelector("#translate")),
   selectTag.forEach((tag, id) => {

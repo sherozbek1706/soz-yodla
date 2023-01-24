@@ -115,7 +115,7 @@
               <i id="from" class="fas fa-volume-up"></i>
               <i id="from" class="fas fa-copy"></i>
             </div>
-            <select></select>
+            <select class="select" ></select>
           </li>
           <li class="exchange"><i class="fas fa-exchange-alt"></i></li>
           <li class="row to">
@@ -132,6 +132,17 @@
         </div>
       </div>
       <button id="translate">Translate Text</button>
+    </div>
+    <div class="settings-main hide" id="settings-main">
+      <h1>Sozlamalar</h1>
+      <div class="settings-option">
+        <h2>So'zlarni qanday so'zda berilsin!</h2>
+        <select id="test-language-select">
+          <option value="en">only English</option>
+          <option value="uz">only Uzbek</option>
+          <option value="all">All</option>
+        </select>
+      </div>
     </div>
     <div class="modal-wrapper modal-hide" id="modal-menu">
       <div class="modal">
@@ -154,6 +165,10 @@
           <div class="modal-menu-item" id="translator-menu">
             <i class="fa-solid fa-globe"></i>
             <p>Tarjimon</p>
+          </div>
+          <div class="modal-menu-item" id="settings-menu">
+            <i class="fa-solid fa-gear"></i>
+            <p>Sozlamalar</p>
           </div>
           <div class="modal-menu-item" id="infoAbout-menu">
             <i class="fa-solid fa-circle-info"></i>
