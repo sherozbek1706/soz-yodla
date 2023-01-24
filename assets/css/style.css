@@ -64,6 +64,7 @@ header p:hover {
 }
 
 .home-main {
+  position: relative;
   width: 600px;
   padding: 10px 15px;
   border-radius: 4px;
@@ -71,6 +72,16 @@ header p:hover {
   z-index: 50;
   transition: 0.5s ease-in-out;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+}
+#mode{
+  position: absolute;
+  left: 0;
+  top: -35px;
+  background:white;
+  padding: 10px 17px;
+  border-radius: 10px 20px 10px 0 ;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+
 }
 .home-main .word {
   width: 100%;

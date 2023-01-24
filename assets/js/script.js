@@ -4,6 +4,7 @@ let nextButton = document.querySelector("#next-button");
 let helpButton = document.querySelector("#help-button");
 let showModal = document.querySelector("#show-modal");
 let modal = document.querySelector("#modal-menu");
+let mode = document.querySelector("#mode");
 let emptyAddWord = document.querySelector("#empty-addWord");
 
 let spinner = document.querySelector("#spinner-cont");
@@ -57,14 +58,18 @@ container.setAttribute(
 
 // OPTION LANGUAGE IDX
 localStorage.getItem("languageIdx")
-? console.log("Bor Oka Til")
-: localStorage.setItem("languageIdx", "all");
-settingsOption.value = localStorage.getItem("languageIdx")
-
-
+  ? console.log("Bor Oka Til")
+  : localStorage.setItem("languageIdx", "all");
+settingsOption.value = localStorage.getItem("languageIdx");
+mode.textContent = `MODE : ${localStorage
+  .getItem("languageIdx")
+  .toUpperCase()}`;
 
 const renderRandomWord = () => {
   let languageName = localStorage.getItem("languageIdx");
+  mode.textContent = `MODE : ${localStorage
+    .getItem("languageIdx")
+    .toUpperCase()}`;
   comboXG += 1;
   let languageIdx = 0;
   if (languageName == "all") {
