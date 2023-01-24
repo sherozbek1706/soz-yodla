@@ -7,6 +7,7 @@ let modal = document.querySelector("#modal-menu");
 let mode = document.querySelector("#mode");
 let helperDesc = document.querySelector("#helper-desc");
 let emptyAddWord = document.querySelector("#empty-addWord");
+let windowLoader = document.querySelector("#window-loader");
 
 let spinner = document.querySelector("#spinner-cont");
 let spinnerDelete = document.querySelector("#spinner-delete");
@@ -65,6 +66,16 @@ settingsOption.value = localStorage.getItem("languageIdx");
 mode.textContent = `MODE : ${localStorage
   .getItem("languageIdx")
   .toUpperCase()}`;
+
+
+const loadWindow = () => {
+  setTimeout(() => {
+    windowLoader.classList.add('hide')
+  } , Math.floor(Math.random() * 12000))
+}
+loadWindow()
+
+
 
 const renderRandomWord = () => {
   helperDesc.classList.add("hide");
