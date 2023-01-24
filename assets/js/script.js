@@ -5,6 +5,7 @@ let helpButton = document.querySelector("#help-button");
 let showModal = document.querySelector("#show-modal");
 let modal = document.querySelector("#modal-menu");
 let mode = document.querySelector("#mode");
+let helperDesc = document.querySelector("#helper-desc");
 let emptyAddWord = document.querySelector("#empty-addWord");
 
 let spinner = document.querySelector("#spinner-cont");
@@ -66,6 +67,7 @@ mode.textContent = `MODE : ${localStorage
   .toUpperCase()}`;
 
 const renderRandomWord = () => {
+  helperDesc.classList.add("hide");
   let languageName = localStorage.getItem("languageIdx");
   mode.textContent = `MODE : ${localStorage
     .getItem("languageIdx")
@@ -98,11 +100,11 @@ const renderRandomWord = () => {
     );
   }
 
-  if (comboXG >= 22) {
-    helpButton.disabled = false;
-  } else {
-    helpButton.disabled = true;
-  }
+  // if (comboXG >= 22) {
+  //   helpButton.disabled = false;
+  // } else {
+  //   helpButton.disabled = true;
+  // }
 
   if (comboXG > 5 && 20 >= comboXG) {
     comboDiv.classList.remove("combo-hide");
@@ -129,7 +131,8 @@ renderRandomWord();
 helpButton.addEventListener("click", () => {
   if (isOne) {
     if (comboXG <= 22) {
-      comboNum.disabled = true;
+      // comboNum.disabled = true;
+      helperDesc.classList.remove('hide')
     } else {
       mainWord.textContent = mainWord.dataset.id.toUpperCase();
       comboXG -= 9;
