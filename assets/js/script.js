@@ -56,10 +56,10 @@ container.setAttribute(
 );
 
 // OPTION LANGUAGE IDX
-settingsOption.value = localStorage.getItem("languageIdx")
 localStorage.getItem("languageIdx")
-  ? console.log("Bor Oka Til")
-  : localStorage.setItem("languageIdx", "all");
+? console.log("Bor Oka Til")
+: localStorage.setItem("languageIdx", "all");
+settingsOption.value = localStorage.getItem("languageIdx")
 
 
 
