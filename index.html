@@ -37,24 +37,24 @@
         <button class="next-button" id="next-button">NEXT WORD</button>
       </div>
       <div class="helper-button">
-        <button class="help-button" id="help-button" title="22 ta COMBO talab qilinadi!">HELP WORD</button>
+        <button class="help-button" id="help-button" title="22 COMBO'S ARE REQUIRED TO HELP YOU!">HELP WORD</button>
       </div>
-      <h3 id="helper-desc" class="helper-desc hide">Yordam Olishingiz uchun 22 ta COMBO talab qilinadi!</h3>
+      <h3 id="helper-desc" class="helper-desc hide">22 COMBO'S ARE REQUIRED TO HELP YOU!</h3>
     </div>
     <div class="info-main hide" id="info-main">
-      <h1>Dastur Haqida Ma'lumot</h1>
-      <p>So'z yodlashga yordam beradigan , <b>Dastur</b>!</p>
-      <p>Bu dasturdan foydalanib siz qiyin so'zlarni ham oson yodalashingiz mumkin</p>
-      <p>Do'stingiz yoki yaqinningizga so'zlarni so'rashlari uchun bezovta qilmaysiz!</p>
-      <p>Shunchaki dasturga start berasiz bo'ldi!</p>
-      <h3>Telefon Raqam</h3>
+      <h1>Program Information</h1>
+      <p><b>Program</b> that helps memorizing words!</p>
+      <p>Using this program you can easily memorize difficult words</p>
+      <p>You don't bother your friend or loved one to ask for words!</p>
+      <p>Just start the program!</p>
+      <h3>Phone Number</h3>
       <h4>+998 93 834 06 17</h4>
       <h4>+998 88 396 49 09</h4>
-      <h3>Email Pochta</h3>
-      <h4>baxtiyorovsherozbek1111@gmail.com</h4>
-      <h3>Manzil</h3>
-      <h4>Toshkent shahar , Chilonzor Tumani , 16 daha</h4>
-      <h4>46-dom ,Chilonzor Metro</h4>
+      <h3>Email Mail</h3>
+      <h4>bakhtiyorovsherozbek1111@gmail.com</h4>
+      <h3>Address</h3>
+      <h4>Tashkent city, Chilanzor district, 16 daha</h4>
+      <h4>Dom 46, Chilonzor Metro</h4>
     </div>
     <div class="add-main hide" id="add-main">
       <div class="spinner-cont hide" id="spinner-cont">
@@ -64,16 +64,16 @@
           <div></div>
           <div></div>
         </div>
-        <h1>Yangi so'z qo'shilmoqda</h1>
+        <h1>Adding new word</h1>
       </div>
-      <h1>Yangi So'z Qo'shish</h1>
+      <h1>Add New Word</h1>
       <form id="addition-form">
         <div class="addition-input">
-          <p>O'zbekcha</p>
+          <p>UZBEK</p>
           <input type="text" id="uzbek" placeholder="Yangi so'z kirit..." required>
         </div>
         <div class="addition-input">
-          <p>Inglizcha</p>
+          <p>ENGLISH</p>
           <input type="text" id="english" placeholder="Enter new word..." required>
         </div>
         <button class="addWord-button">
@@ -89,18 +89,11 @@
           <div></div>
           <div></div>
         </div>
-        <h1>Malumot o'chirilmoqda</h1>
+        <h1>Deleting information</h1>
       </div>
-      <h1>Barcha so'zlar</h1>
+      <h1>All words</h1>
       <div class="lists" id="lists">
-        <!-- <div class="list">
-          <div class="list-left-side">
-            <p class="id">4</p>
-            <p class="list-name">Hello - Salom</p>
-          </div>
-          <i class="fa-solid fa-trash trash"></i>
-        </div> -->
-        <button class="empty-addWord hide" id="empty-addWord">Yangi so'z Qo'shish!</button>
+        <button class="empty-addWord hide" id="empty-addWord">Add new word!</button>
       </div>
 
     </div>
@@ -112,7 +105,7 @@
               <i id="from" class="fas fa-volume-up"></i>
               <i id="from" class="fas fa-copy"></i>
             </div>
-            <select class="select" ></select>
+            <select class="select"></select>
           </li>
           <li class="exchange"><i class="fas fa-exchange-alt"></i></li>
           <li class="row to">
@@ -131,9 +124,9 @@
       <button id="translate">Translate Text</button>
     </div>
     <div class="settings-main hide" id="settings-main">
-      <h1>Sozlamalar</h1>
+      <h1>Settings</h1>
       <div class="settings-option">
-        <h2>So'zlar qanday tilda berilsin!</h2>
+        <h2>What language should the words be given!</h2>
         <select id="test-language-select">
           <option value="en">only English</option>
           <option value="uz">only Uzbek</option>
@@ -149,27 +142,27 @@
         <div class="modal-menu">
           <div class="modal-menu-item" id="head-menu">
             <i class="fa-solid fa-house"></i>
-            <p>Bosh Menu</p>
+            <p>Main Menu</p>
           </div>
           <div class="modal-menu-item" id="add-menu">
             <i class="fa-solid fa-square-plus"></i>
-            <p>Bazaga Yangi So'z Qo'shish</p>
+            <p>Adding a New Word</p>
           </div>
           <div class="modal-menu-item" id="lists-menu">
             <i class="fa-solid fa-list"></i>
-            <p>Bazadagi Barcha so'zlarni ko'rish.</p>
+            <p>View all words</p>
           </div>
           <div class="modal-menu-item" id="translator-menu">
             <i class="fa-solid fa-globe"></i>
-            <p>Tarjimon</p>
+            <p>Translator</p>
           </div>
           <div class="modal-menu-item" id="settings-menu">
             <i class="fa-solid fa-gear"></i>
-            <p>Sozlamalar</p>
+            <p>Settings</p>
           </div>
           <div class="modal-menu-item" id="infoAbout-menu">
             <i class="fa-solid fa-circle-info"></i>
-            <p>Dastur Haqida Ma'lumot</p>
+            <p>Program Information</p>
           </div>
         </div>
       </div>
