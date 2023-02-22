@@ -460,6 +460,7 @@ header p:hover {
   z-index: 50;
   overflow: auto;
   position: relative;
+  
 }
 .list-main h1 {
   letter-spacing: -1.7px;
@@ -543,7 +544,7 @@ header p:hover {
 }
 /* Spinner ----------- */
 .spinner-cont {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
