@@ -72,6 +72,8 @@ mode.textContent = `MODE : ${localStorage
 
 const loadWindow = () => {
   setTimeout(() => {
+    settingsOption.value = localStorage.getItem("languageIdx");
+
     windowLoader.classList.add("hide");
   }, Math.floor(Math.random() * 12000));
 };
@@ -286,9 +288,10 @@ emptyAddWord.addEventListener("click", () => {
   listsMain.classList.add("hide");
 });
 
-settingsOption.addEventListener("change", () => {
-  localStorage.setItem("languageIdx", settingsOption.value);
-});
 infinityOption.addEventListener("change", () => {
   localStorage.setItem("infinity", infinityOption.value);
+});
+
+settingsOption.addEventListener("change", () => {
+  localStorage.setItem("languageIdx", settingsOption.value);
 });
