@@ -337,6 +337,7 @@ header p:hover {
   width: 100%;
   height: 40px;
   display: flex;
+  margin: 10px 0;
   align-items: center;
   justify-content: space-between;
 }
@@ -345,7 +346,7 @@ header p:hover {
   padding: 0 5px;
   letter-spacing: -1px;
 }
-.settings-option #test-language-select {
+.settings-option .options-select {
   font-size: 16px;
   letter-spacing: -0.5px;
   padding: 5px 20px;

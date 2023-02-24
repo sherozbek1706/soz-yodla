@@ -29,6 +29,7 @@ let translatorMenu = document.querySelector("#translator-menu");
 let settingsMenu = document.querySelector("#settings-menu");
 
 let settingsOption = document.querySelector("#test-language-select");
+let infinityOption = document.querySelector("#infinity-help-select");
 
 let comboDiv = document.querySelector("#combo-div");
 let comboNum = document.querySelector("#combo-num");
@@ -58,6 +59,13 @@ localStorage.getItem("languageIdx")
   ? null
   : localStorage.setItem("languageIdx", "all");
 settingsOption.value = localStorage.getItem("languageIdx");
+
+// OPTION INFINITY
+localStorage.getItem("infinity")
+  ? null
+  : localStorage.setItem("infinity", "no");
+settingsOption.value = localStorage.getItem("infinity") || "no";
+
 mode.textContent = `MODE : ${localStorage
   .getItem("languageIdx")
   .toUpperCase()}`;
@@ -133,14 +141,21 @@ renderRandomWord();
 
 helpButton.addEventListener("click", () => {
   if (isOne) {
-    if (comboXG <= 0) {
-      // comboNum.disabled = true;
-      helperDesc.classList.remove("hide");
-    } else {
+    if (localStorage.getItem("infinity") == "yes") {
       mainWord.textContent = mainWord.dataset.id.toUpperCase();
-      comboXG -= 9;
+      comboXG = 0;
       isOne = false;
       comboNum.textContent = `x ${comboXG}`;
+    } else {
+      if (comboXG <= 22) {
+        // comboNum.disabled = true;
+        helperDesc.classList.remove("hide");
+      } else {
+        mainWord.textContent = mainWord.dataset.id.toUpperCase();
+        comboXG -= 9;
+        isOne = false;
+        comboNum.textContent = `x ${comboXG}`;
+      }
     }
   }
 });
@@ -273,4 +288,7 @@ emptyAddWord.addEventListener("click", () => {
 
 settingsOption.addEventListener("change", () => {
   localStorage.setItem("languageIdx", settingsOption.value);
+});
+infinityOption.addEventListener("change", () => {
+  localStorage.setItem("infinity", infinityOption.value);
 });
