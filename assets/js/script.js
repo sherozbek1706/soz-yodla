@@ -35,15 +35,10 @@ let comboNum = document.querySelector("#combo-num");
 let comboXG = 0;
 let isOne = true;
 let baseCha = JSON.parse(localStorage.getItem("bases"));
-console.log(baseCha);
 // DATA'ni Localstorage'ga jo'natish
-
-console.log(localStorage.getItem("bases"));
 
 if (localStorage.getItem("bases") == null) {
   localStorage.setItem("bases", JSON.stringify(data));
-} else {
-  console.log("Hammasi yaxshi!");
 }
 
 // RANDOM BG
@@ -60,22 +55,19 @@ container.setAttribute(
 
 // OPTION LANGUAGE IDX
 localStorage.getItem("languageIdx")
-  ? console.log("Bor Oka Til")
+  ? null
   : localStorage.setItem("languageIdx", "all");
 settingsOption.value = localStorage.getItem("languageIdx");
 mode.textContent = `MODE : ${localStorage
   .getItem("languageIdx")
   .toUpperCase()}`;
 
-
 const loadWindow = () => {
   setTimeout(() => {
-    windowLoader.classList.add('hide')
-  } , Math.floor(Math.random() * 12000))
-}
-loadWindow()
-
-
+    windowLoader.classList.add("hide");
+  }, Math.floor(Math.random() * 12000));
+};
+loadWindow();
 
 const renderRandomWord = () => {
   helperDesc.classList.add("hide");
@@ -141,9 +133,9 @@ renderRandomWord();
 
 helpButton.addEventListener("click", () => {
   if (isOne) {
-    if (comboXG <= 22) {
+    if (comboXG <= 0) {
       // comboNum.disabled = true;
-      helperDesc.classList.remove('hide')
+      helperDesc.classList.remove("hide");
     } else {
       mainWord.textContent = mainWord.dataset.id.toUpperCase();
       comboXG -= 9;
@@ -228,8 +220,7 @@ function beautyString(str) {
 function renderListWords() {
   let Lists = document.querySelector("#lists");
   let base = JSON.parse(localStorage.getItem("bases"));
-  Lists.textContent = base.length ? null : console.log("Hayrli Tong");
-  console.log("betga kirdim oka");
+  Lists.textContent = base.length ? null : undefined;
   if (!base.length) {
     emptyAddWord.classList.remove("hide");
     localStorage.removeItem("bases");
@@ -278,7 +269,6 @@ function deleteList(id) {
 emptyAddWord.addEventListener("click", () => {
   AddMain.classList.remove("hide");
   listsMain.classList.add("hide");
-  console.log("");
 });
 
 settingsOption.addEventListener("change", () => {
