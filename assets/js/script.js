@@ -64,7 +64,7 @@ settingsOption.value = localStorage.getItem("languageIdx");
 localStorage.getItem("infinity")
   ? null
   : localStorage.setItem("infinity", "no");
-settingsOption.value = localStorage.getItem("infinity") || "no";
+infinityOption.value = localStorage.getItem("infinity") || "no";
 
 mode.textContent = `MODE : ${localStorage
   .getItem("languageIdx")
@@ -75,9 +75,11 @@ const loadWindow = () => {
     settingsOption.value = localStorage.getItem("languageIdx");
 
     windowLoader.classList.add("hide");
-  }, Math.floor(Math.random() * 12000));
+  }, Math.floor(Math.random() * 7000));
 };
 loadWindow();
+
+let showedWordsList = [];
 
 const renderRandomWord = () => {
   helperDesc.classList.add("hide");
@@ -97,6 +99,23 @@ const renderRandomWord = () => {
   const base = JSON.parse(localStorage.getItem("bases"));
   const dataLength = base.length;
   let dataIdx = Math.floor(Math.random() * dataLength);
+  let allow = true;
+  // console.log(allow);
+  while (allow) {
+    let foundWord = showedWordsList.find((word) => word == dataIdx);
+    // console.log("foundWord" + " " + foundWord);
+    // console.log(showedWordsList);
+    if (!foundWord && foundWord !== 0) {
+      showedWordsList.push(dataIdx);
+      allow = false;
+      // console.log(allow);
+    } else if (base.length == showedWordsList.length) {
+      showedWordsList = [];
+    } else {
+      dataIdx = Math.floor(Math.random() * dataLength);
+    }
+  }
+  console.log("Mana bu raqam " + "  " + base[dataIdx].uz);
   let languageWord = languageIdx ? base[dataIdx].uz : base[dataIdx].en;
   comboNum.textContent = `x ${comboXG}`;
 
@@ -138,12 +157,14 @@ const renderRandomWord = () => {
   !(languageIdx == 0) || speechSynthesis.speak(gapirUkam);
 
   // SHE'ROZBEK
+  allow = true;
 };
 renderRandomWord();
 
 helpButton.addEventListener("click", () => {
   if (isOne) {
     if (localStorage.getItem("infinity") == "yes") {
+      showedWordsList = [];
       mainWord.textContent = mainWord.dataset.id.toUpperCase();
       comboXG = 0;
       isOne = false;
@@ -153,6 +174,7 @@ helpButton.addEventListener("click", () => {
         // comboNum.disabled = true;
         helperDesc.classList.remove("hide");
       } else {
+        showedWordsList = [];
         mainWord.textContent = mainWord.dataset.id.toUpperCase();
         comboXG -= 9;
         isOne = false;

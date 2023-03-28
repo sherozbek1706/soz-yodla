@@ -19,13 +19,19 @@
   justify-content: center;
   z-index: 500;
 }
-.window-loader a{
-  font-size: 18px;
+.window-loader a {
+  font-size: 20px;
   margin: 20px 0;
-  font-weight: 700;
+  font-weight: 800;
   color: #333;
   letter-spacing: -0.5px;
+  text-transform: uppercase;
 }
+.window-loader a:nth-child(3){
+  font-size: 14px;
+  margin: 0 10px;
+  text-align: center;
+} 
 
 /*  */
 /*  */
@@ -38,7 +44,6 @@
   position: relative;
   -webkit-transform: rotateZ(45deg);
   transform: rotateZ(45deg) scale(1.5);
-
 }
 
 .sk-folding-cube .sk-cube {
@@ -461,7 +466,6 @@ header p:hover {
   z-index: 50;
   overflow: auto;
   position: relative;
-  
 }
 .list-main h1 {
   letter-spacing: -1.7px;
