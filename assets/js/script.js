@@ -27,6 +27,7 @@ let addMenu = document.querySelector("#add-menu");
 let listsMenu = document.querySelector("#lists-menu");
 let translatorMenu = document.querySelector("#translator-menu");
 let settingsMenu = document.querySelector("#settings-menu");
+let settingsDeleteBtn = document.querySelector(".settings-delete");
 
 let settingsOption = document.querySelector("#test-language-select");
 let infinityOption = document.querySelector("#infinity-help-select");
@@ -75,7 +76,7 @@ const loadWindow = () => {
     settingsOption.value = localStorage.getItem("languageIdx");
 
     windowLoader.classList.add("hide");
-  }, Math.floor(Math.random() * 7000));
+  }, Math.floor(Math.random() * 700));
 };
 loadWindow();
 
@@ -297,6 +298,11 @@ function renderListWords() {
   }
 }
 renderListWords();
+
+settingsDeleteBtn.addEventListener("click", () => {
+  localStorage.removeItem('bases')
+  window.location.assign('/');
+});
 
 function deleteList(id) {
   let base = JSON.parse(localStorage.getItem("bases"));

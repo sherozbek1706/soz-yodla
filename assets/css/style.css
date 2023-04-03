@@ -27,11 +27,11 @@
   letter-spacing: -0.5px;
   text-transform: uppercase;
 }
-.window-loader a:nth-child(3){
+.window-loader a:nth-child(3) {
   font-size: 14px;
   margin: 0 10px;
   text-align: center;
-} 
+}
 
 /*  */
 /*  */
@@ -346,13 +346,30 @@ header p:hover {
   align-items: center;
   justify-content: space-between;
 }
+.settings-delete {
+  padding: 7px 20px;
+  font-weight: 600;
+  font-size: 14px;
+  border-radius: 6px;
+  border: none;
+  background-color: white;
+  transition: .3s ease-in-out;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+.settings-delete:hover{
+  background-color: red;
+  color: #fff;
+  cursor: pointer;
+}
+
 .settings-option h2 {
   font-size: 18px;
   padding: 0 5px;
   letter-spacing: -1px;
 }
 .settings-option .options-select {
-  font-size: 16px;
+  font-size: 14px;
   letter-spacing: -0.5px;
   padding: 5px 20px;
   font-weight: 600;
@@ -705,23 +722,25 @@ header p:hover {
 }
 .modal .modal-menu .modal-menu-item p {
   font-size: 18px;
-  font-weight: 500;
+  font-weight: 600;
   color: #36454f;
   letter-spacing: -1.2px;
   transition: 0.3s ease-in-out;
 }
 .modal .modal-menu .modal-menu-item:hover {
-  background: #892be2be;
+  background: #892be2ea;
   cursor: pointer;
 }
 .modal .modal-menu .modal-menu-item:hover i {
-  color: #000;
+  color: #fff;
+  transform: scale(1.05);
 }
 .modal .modal-menu .modal-menu-item:hover p {
-  letter-spacing: -0.5px;
+  letter-spacing: -0.8px;
+  transform: scale(1.05);
   cursor: pointer;
-  font-weight: 700;
-  color: #000;
+  font-weight: 600;
+  color: #fff;
 }
 
 .modal-hide {
