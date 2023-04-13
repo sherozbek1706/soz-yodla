@@ -206,12 +206,20 @@ header p:hover {
 #mode {
   position: absolute;
   left: 0;
+  display: flex;
+  align-items: flex-end;
   top: -35px;
   background: white;
   padding: 10px 17px;
   border-radius: 10px 20px 10px 0;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+.version{
+  padding: 0 6px;
+  font-size: 12px;
+  font-style: italic;
+  color: #892be2;
 }
 .helper-desc {
   z-index: 12;
@@ -353,11 +361,11 @@ header p:hover {
   border-radius: 6px;
   border: none;
   background-color: white;
-  transition: .3s ease-in-out;
+  transition: 0.3s ease-in-out;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
-.settings-delete:hover{
+.settings-delete:hover {
   background-color: red;
   color: #fff;
   cursor: pointer;
@@ -528,15 +536,56 @@ header p:hover {
   letter-spacing: -0.8px;
   transition: 0.3s ease-in-out;
 }
-.list .trash {
-  font-size: 18px;
-  color: white;
+.list .lists-options {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.list i {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 3px;
+  width: 32px;
+  height: 32px;
   cursor: pointer;
   transition: 0.3s ease-in-out;
   padding: 8px 10px;
   border-radius: 4px;
-  background-color: red;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
 }
+.list .trash {
+  font-size: 18px;
+  color: white;
+  background-color: #ee4035;
+}
+.list .dots-bar {
+  font-size: 18px;
+  color: white;
+  background-color: #892be2;
+}
+.list .cross-option {
+  font-size: 18px;
+  color: white;
+  background: linear-gradient(45deg, red, #851e3e, red, #851e3e, red, #851e3e);
+}
+
+.list .disabledBtn {
+  font-size: 18px;
+  color: white;
+}
+.list .activeBtn {
+  background-color: #2a4d69;
+}
+
+.list .disactiveBtn {
+  background-color: #2a4d69;
+  opacity: 0.5;
+  z-index: 1;
+  box-shadow: rgba(255, 255, 255) 0px 0px 0px 2px,
+    rgba(255, 255, 255) 0px 4px 6px -1px, rgba(255, 255, 255) 0px 1px 0px inset;
+}
+
 .list:hover {
   background-color: #892be2;
   cursor: pointer;
@@ -549,6 +598,27 @@ header p:hover {
   color: red;
   background-color: #fff;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+}
+.list:hover .dots-bar {
+  color: blue;
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+}
+.list:hover .cross-option {
+  color: red;
+  background: #fff;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+}
+/* .list:hover .disabledBtn {
+  color: #892be2;
+  background: #fff;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+} */
+
+.list .trash:hover {
+  color: white;
+  background-color: #ee4035;
+  box-shadow: rgba(255, 255, 255, 0.61) 0px 5px 15px 0px;
 }
 
 .empty-addWord {

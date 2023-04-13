@@ -34,6 +34,10 @@ let infinityOption = document.querySelector("#infinity-help-select");
 
 let comboDiv = document.querySelector("#combo-div");
 let comboNum = document.querySelector("#combo-num");
+
+// VERSION
+let appVersion = "3.0.1";
+
 let comboXG = 0;
 let isOne = true;
 let baseCha = JSON.parse(localStorage.getItem("bases"));
@@ -42,6 +46,23 @@ let baseCha = JSON.parse(localStorage.getItem("bases"));
 if (localStorage.getItem("bases") == null) {
   localStorage.setItem("bases", JSON.stringify(data));
 }
+
+const additionActiveWords = () => {
+  const data = JSON.parse(localStorage.getItem("bases"));
+  for (let val in data) {
+    if (!data[val].active && data[val].active !== false) {
+      data.splice(val, 1, {
+        id: data[val].id,
+        uz: data[val].uz,
+        en: data[val].en,
+        active: true,
+      });
+    }
+  }
+  localStorage.setItem("bases", JSON.stringify(data));
+};
+
+additionActiveWords();
 
 // RANDOM BG
 container.setAttribute(
@@ -67,16 +88,12 @@ localStorage.getItem("infinity")
   : localStorage.setItem("infinity", "no");
 infinityOption.value = localStorage.getItem("infinity") || "no";
 
-mode.textContent = `MODE : ${localStorage
-  .getItem("languageIdx")
-  .toUpperCase()}`;
-
 const loadWindow = () => {
   setTimeout(() => {
     settingsOption.value = localStorage.getItem("languageIdx");
 
     windowLoader.classList.add("hide");
-  }, Math.floor(Math.random() * 700));
+  }, Math.floor(Math.random() * 1900));
 };
 loadWindow();
 
@@ -87,7 +104,12 @@ const renderRandomWord = () => {
   let languageName = localStorage.getItem("languageIdx");
   mode.textContent = `MODE : ${localStorage
     .getItem("languageIdx")
-    .toUpperCase()}`;
+    .toUpperCase()} `;
+
+  let version = document.createElement("p");
+  version.innerHTML = `v${appVersion}`;
+  version.className = "version";
+  mode.append(version);
   comboXG += 1;
   let languageIdx = 0;
   if (languageName == "all") {
@@ -101,22 +123,36 @@ const renderRandomWord = () => {
   const dataLength = base.length;
   let dataIdx = Math.floor(Math.random() * dataLength);
   let allow = true;
-  // console.log(allow);
+
+  let CountFalse = 0;
+  for (let i = 0; i < base.length; i++) {
+    if (base[i].active === false) {
+      CountFalse++;
+    }
+  }
+
   while (allow) {
+    if (CountFalse === base.length) {
+      let haveToTrueElement = {
+        id: base[0].id,
+        uz: base[0].uz,
+        en: base[0].en,
+        active: true,
+      };
+      base.splice(0, 1, haveToTrueElement);
+      localStorage.setItem("bases", JSON.stringify(base));
+      allow = false;
+    }
     let foundWord = showedWordsList.find((word) => word == dataIdx);
-    // console.log("foundWord" + " " + foundWord);
-    // console.log(showedWordsList);
-    if (!foundWord && foundWord !== 0) {
+    if (!foundWord && foundWord !== 0 && base[dataIdx].active !== false) {
       showedWordsList.push(dataIdx);
       allow = false;
-      // console.log(allow);
-    } else if (base.length == showedWordsList.length) {
+    } else if (base.length - CountFalse == showedWordsList.length) {
       showedWordsList = [];
     } else {
       dataIdx = Math.floor(Math.random() * dataLength);
     }
   }
-  console.log("Mana bu raqam " + "  " + base[dataIdx].uz);
   let languageWord = languageIdx ? base[dataIdx].uz : base[dataIdx].en;
   comboNum.textContent = `x ${comboXG}`;
 
@@ -196,6 +232,15 @@ showModal.addEventListener("click", () => {
   listsMain.classList.add("hide");
   translatorMain.classList.add("hide");
   settingsMain.classList.add("hide");
+
+  let base = JSON.parse(localStorage.getItem("bases"));
+
+  let CountFalse = 0;
+  for (let i = 0; i < base.length; i++) {
+    if (base[i].active === false) {
+      CountFalse++;
+    }
+  }
 });
 
 headMenu.addEventListener("click", () => {
@@ -231,7 +276,7 @@ const loaderSpinner = () => {
   setTimeout(() => {
     spinnerDelete.classList.add("hide");
     spinner.classList.add("hide");
-  }, 1500);
+  }, 1000);
 };
 
 additionForm.addEventListener("submit", (e) => {
@@ -248,6 +293,7 @@ additionForm.addEventListener("submit", (e) => {
   uzbek.value = "";
   english.value = "";
   loaderSpinner();
+  additionActiveWords();
 });
 
 function beautyString(str) {
@@ -272,15 +318,34 @@ function renderListWords() {
       let listLeftSide = document.createElement("div");
       let id = document.createElement("p");
       let listName = document.createElement("p");
+      let listsOptions = document.createElement("div");
+
       let trash = document.createElement("i");
+      let cross = document.createElement("i");
+      let disabled = document.createElement("i");
+      let dots = document.createElement("i");
 
       list.className = "list";
       listLeftSide.className = "list-left-side";
       id.className = "id";
+      listsOptions.className = "lists-options";
       listName.className = "list-name";
-      trash.className = "fa-solid fa-trash trash";
+      // trash.className = "fa-solid fa-trash trash";
+
+      // <i class="fa-solid fa-ellipsis"></i>
+
+      trash.className = "fa-regular fa-trash-can trash hide";
+      // <i class="fa-regular fa-trash-can"></i>
+      dots.className = "fa-solid fa-ellipsis dots-bar hide";
+      disabled.className = `fa-solid fa-square-minus disabledBtn ${
+        base[idx].active ? "activeBtn" : "disactiveBtn"
+      } hide`;
+
+      cross.className = "fa-solid fa-circle-xmark cross-option hide";
+      // <i class="fa-solid fa-circle-xmark"></i>
 
       trash.dataset.id = idx;
+      disabled.dataset.id = idx;
 
       id.textContent = idx + 1;
       listName.textContent = `${beautyString(item.en)} - ${beautyString(
@@ -290,18 +355,37 @@ function renderListWords() {
       listLeftSide.append(id);
       listLeftSide.append(listName);
       list.append(listLeftSide);
-      list.append(trash);
+
+      // APPEND TRASH
+      listsOptions.append(trash);
+
+      // APPEND DOTS
+      // list.append(dots);
+
+      // APPEND disabled
+      listsOptions.append(disabled);
+
+      // APPEND cross
+      // listsOptions.append(cross);
+
+      list.append(listsOptions);
       Lists.append(list);
 
       trash.addEventListener("click", () => deleteList(idx));
+      disabled.addEventListener("click", () => disabledBtnList(idx));
     });
   }
 }
 renderListWords();
 
 settingsDeleteBtn.addEventListener("click", () => {
-  localStorage.removeItem('bases')
-  window.location.assign('/');
+  let DoYouReallyDeleteWords = confirm(
+    "Do you really want to delete all words ?"
+  );
+  if (DoYouReallyDeleteWords) {
+    localStorage.removeItem("bases");
+    window.location.assign("/");
+  }
 });
 
 function deleteList(id) {
@@ -311,6 +395,19 @@ function deleteList(id) {
   localStorage.setItem("bases", JSON.stringify(base));
   renderListWords();
 }
+
+function disabledBtnList(id) {
+  let base = JSON.parse(localStorage.getItem("bases"));
+  base.splice(id, 1, {
+    id: base[id].id,
+    uz: base[id].uz,
+    en: base[id].en,
+    active: !base[id].active,
+  });
+  localStorage.setItem("bases", JSON.stringify(base));
+  renderListWords();
+}
+
 emptyAddWord.addEventListener("click", () => {
   AddMain.classList.remove("hide");
   listsMain.classList.add("hide");
