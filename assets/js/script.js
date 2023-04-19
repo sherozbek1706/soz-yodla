@@ -13,7 +13,7 @@ let spinner = document.querySelector("#spinner-cont");
 let spinnerDelete = document.querySelector("#spinner-delete");
 
 let additionForm = document.querySelector("#addition-form");
-let Warning_text = document.querySelector(".warning-text");
+let Warning_text = document.querySelectorAll(".warning-text");
 
 let homeMain = document.querySelector("#home-main");
 let infoMain = document.querySelector("#info-main");
@@ -112,9 +112,13 @@ let showedWordsList = [];
 const alertMsg = () => {
   let checkedBox = localStorage.getItem("checkedIS");
   if (checkedBox == "true") {
-    Warning_text.classList.remove("hide");
+    Warning_text.forEach((warning) => {
+      warning.classList.remove("hide");
+    });
   } else if (checkedBox == "false") {
-    Warning_text.classList.add("hide");
+    Warning_text.forEach((warning) => {
+      warning.classList.add("hide");
+    });
   }
 };
 
