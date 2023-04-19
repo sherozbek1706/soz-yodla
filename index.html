@@ -76,6 +76,11 @@
       </div>
       <h1>Add New Word</h1>
       <form id="addition-form">
+        <div class="warning-text">
+          <p>If you add a new word now, the information in the database may be deleted. Because  " <i><b>Do you want to
+                repeat
+                everything completely ? </b></i> " section is enabled from the settings section.</p>
+        </div>
         <div class="addition-input">
           <p>ENGLISH</p>
           <input type="text" id="english" placeholder="Enter new word..." required>
@@ -100,6 +105,11 @@
         <h1>Deleting information</h1>
       </div>
       <h1>All words</h1>
+      <div class="warning-text">
+        <p>If you change a word now, the information in the database may be deleted. Because  " <i><b>Do you want to
+              repeat
+              everything completely ? </b></i> " section is enabled from the settings section.</p>
+      </div>
       <div class="lists" id="lists">
         <button class="empty-addWord hide" id="empty-addWord">Add new word!</button>
       </div>
@@ -152,6 +162,11 @@
         <h2>Do you agree to delete all words ?</h2>
         <button class="settings-delete">Delete</button>
       </div>
+      <div class="settings-option">
+        <h2>Do you want to repeat everything completely ?</h2>
+        <input type="checkbox" class="custom-checkbox" id="happy" unchecked name="happy" value="yes">
+        <label for="happy"></label>
+      </div>
     </div>
     <div class="modal-wrapper modal-hide" id="modal-menu">
       <div class="modal">
@@ -187,6 +202,9 @@
       </div>
     </div>
   </div>
+
+  <!-- Subhanollohi va bihamdi -->
+  <!-- Subhanollohil Azim -->
 
   <script src="./assets/base/data.js"></script>
   <script src="./assets/js/script.js"></script>

@@ -13,6 +13,7 @@ let spinner = document.querySelector("#spinner-cont");
 let spinnerDelete = document.querySelector("#spinner-delete");
 
 let additionForm = document.querySelector("#addition-form");
+let Warning_text = document.querySelector(".warning-text");
 
 let homeMain = document.querySelector("#home-main");
 let infoMain = document.querySelector("#info-main");
@@ -31,12 +32,13 @@ let settingsDeleteBtn = document.querySelector(".settings-delete");
 
 let settingsOption = document.querySelector("#test-language-select");
 let infinityOption = document.querySelector("#infinity-help-select");
+let checkboxOption = document.querySelector("#happy");
 
 let comboDiv = document.querySelector("#combo-div");
 let comboNum = document.querySelector("#combo-num");
 
 // VERSION
-let appVersion = "3.0.1";
+let appVersion = "3.0.2";
 
 let comboXG = 0;
 let isOne = true;
@@ -88,6 +90,11 @@ localStorage.getItem("infinity")
   : localStorage.setItem("infinity", "no");
 infinityOption.value = localStorage.getItem("infinity") || "no";
 
+// CHECKED_OPTION
+localStorage.getItem("checkedIS")
+  ? null
+  : localStorage.setItem("checkedIS", false);
+checkboxOption.checked = localStorage.getItem("checkedIS") === "true";
 const loadWindow = () => {
   setTimeout(() => {
     settingsOption.value = localStorage.getItem("languageIdx");
@@ -95,9 +102,23 @@ const loadWindow = () => {
     windowLoader.classList.add("hide");
   }, Math.floor(Math.random() * 1900));
 };
+// -----------------------------------------------------
+// -----------------------------------------------------
+// -----------------------------------------------------
 loadWindow();
 
 let showedWordsList = [];
+
+const alertMsg = () => {
+  let checkedBox = localStorage.getItem("checkedIS");
+  if (checkedBox == "true") {
+    Warning_text.classList.remove("hide");
+  } else if (checkedBox == "false") {
+    Warning_text.classList.add("hide");
+  }
+};
+
+alertMsg();
 
 const renderRandomWord = () => {
   helperDesc.classList.add("hide");
@@ -241,6 +262,7 @@ showModal.addEventListener("click", () => {
       CountFalse++;
     }
   }
+  alertMsg();
 });
 
 headMenu.addEventListener("click", () => {
@@ -419,4 +441,46 @@ infinityOption.addEventListener("change", () => {
 
 settingsOption.addEventListener("change", () => {
   localStorage.setItem("languageIdx", settingsOption.value);
+});
+
+checkboxOption.addEventListener("change", () => {
+  localStorage.setItem("checkedIS", checkboxOption.checked);
+
+  // const data = JSON.parse(localStorage.getItem("bases"));
+  // for (let val in data) {
+  //   if (!data[val].active && data[val].active !== false) {
+  //     data.splice(val, 1, {
+  //       id: data[val].id,
+  //       uz: data[val].uz,
+  //       en: data[val].en,
+  //       active: true,
+  //     });
+  //   }
+  // }
+
+  if (checkboxOption.checked) {
+    localStorage.setItem(
+      "disBase",
+      JSON.stringify(JSON.parse(localStorage.getItem("bases")))
+    );
+
+    const data = JSON.parse(localStorage.getItem("bases"));
+    for (let val in data) {
+      if (!data[val].active) {
+        data.splice(val, 1, {
+          id: data[val].id,
+          uz: data[val].uz,
+          en: data[val].en,
+          active: true,
+        });
+      }
+    }
+
+    localStorage.setItem("bases", JSON.stringify(data));
+  } else if (checkboxOption.checked == false) {
+    localStorage.setItem(
+      "bases",
+      JSON.stringify(JSON.parse(localStorage.getItem("disBase")))
+    );
+  }
 });
