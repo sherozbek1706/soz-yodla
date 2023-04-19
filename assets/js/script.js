@@ -38,7 +38,7 @@ let comboDiv = document.querySelector("#combo-div");
 let comboNum = document.querySelector("#combo-num");
 
 // VERSION
-let appVersion = "3.0.2";
+let appVersion = "3.0.3";
 
 let comboXG = 0;
 let isOne = true;
