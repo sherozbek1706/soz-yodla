@@ -94,12 +94,14 @@ localStorage.getItem("checkedIS")
   ? null
   : localStorage.setItem("checkedIS", false);
 checkboxOption.checked = localStorage.getItem("checkedIS") === "true";
+
+// LOAD WINDOW ---------
 const loadWindow = () => {
   setTimeout(() => {
     settingsOption.value = localStorage.getItem("languageIdx");
 
     windowLoader.classList.add("hide");
-  }, Math.floor(Math.random() * 1900));
+  }, Math.floor(Math.random() * 6000));
 };
 // -----------------------------------------------------
 // -----------------------------------------------------
