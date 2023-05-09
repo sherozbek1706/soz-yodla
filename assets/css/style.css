@@ -175,6 +175,8 @@ header {
   z-index: 50;
 }
 header h1 {
+  font-family: "poppins";
+  font-weight: 700;
   font-size: 20px;
   letter-spacing: -0.6px;
 }
