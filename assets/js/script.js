@@ -69,9 +69,8 @@ additionActiveWords();
 // RANDOM BG
 container.setAttribute(
   "style",
-  `background: url('/assets/image/bg${Math.floor(
-    // Math.random() * 7
-    5
+  `background: url('./assets/image/bg${Math.floor(
+    Math.random() * 7
   )}.jpg') no-repeat;
    background-size:cover;
    background-position:center;
@@ -185,7 +184,7 @@ const renderRandomWord = () => {
   if (comboXG % 7 == 0) {
     container.setAttribute(
       "style",
-      `background: url('/assets/image/bg${Math.floor(
+      `background: url('./assets/image/bg${Math.floor(
         Math.random() * 7
       )}.jpg') no-repeat;
        background-size:cover;
